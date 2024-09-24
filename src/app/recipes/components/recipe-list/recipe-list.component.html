@@ -2,11 +2,6 @@
 
 <div class="grid-container">
   @for (recipe of recipes; track recipe) {
-    <div class="card">
-      <h3>{{ recipe.name }}</h3>
-      <img src="{{recipe.img}}" alt="Bild zum Rezept">
-      <p>Schwierigkeit: {{ recipe.difficulty }}</p>
-      <p>Dauer: {{ recipe.duration.value }} {{ recipe.duration.unit }}</p>
-    </div>
+    <app-recipe-view [recipe]="recipe"></app-recipe-view>
   }
 </div>
