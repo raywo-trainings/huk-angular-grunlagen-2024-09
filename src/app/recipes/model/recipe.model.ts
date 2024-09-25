@@ -1,6 +1,7 @@
 import {Ingredient} from "./Ingredient.model";
 import {Duration} from "./Duration.model";
 import {Difficulty} from "./Difficulty.model";
+import {TimeUnit} from "./TimeUnit.model";
 
 
 export interface Recipe {
@@ -31,4 +32,19 @@ export interface RecipeDTO {
   ingredients: Ingredient[]
   preparation: string
 
+}
+
+
+export function emptyRecipe(): Recipe {
+  return {
+    id: -1,
+    name: "",
+    img: "",
+    servings: 0,
+    lastEdited: "",
+    ingredients: [],
+    preparation: "",
+    difficulty: Difficulty.EASY,
+    duration: { unit: TimeUnit.HOURS, value: -1 }
+  }
 }

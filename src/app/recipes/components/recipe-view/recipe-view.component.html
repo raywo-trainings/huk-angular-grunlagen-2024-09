@@ -3,4 +3,8 @@
   <img src="{{recipe().img}}" alt="Bild zum Rezept">
   <p>Schwierigkeit: {{ recipe().difficulty }}</p>
   <p>Dauer: {{ recipe().duration.value }} {{ recipe().duration.unit }}</p>
+
+  <hr>
+
+  <a [routerLink]="['/recipes', recipe().id]">Details anzeigen</a>
 </div>

@@ -1,10 +1,13 @@
 import {Component, input} from '@angular/core';
 import {Recipe} from "../../model/recipe.model";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-recipe-view',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './recipe-view.component.html',
   styleUrl: './recipe-view.component.scss'
 })
