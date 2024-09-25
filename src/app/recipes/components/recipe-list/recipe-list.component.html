@@ -1,7 +1,7 @@
 <h2>Recipes</h2>
 
 <div class="grid-container">
-  @for (recipe of recipes | async; track recipe) {
+  @for (recipe of recipes$ | async; track recipe) {
     <app-recipe-view [recipe]="recipe"></app-recipe-view>
   } @empty {
     <p>Es sind noch keine Rezepte gespeichert.</p>

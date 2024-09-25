@@ -1,9 +1,8 @@
-import {Component, inject} from '@angular/core';
-import {Recipe} from "../../model/recipe.model";
+import {Component, inject, OnInit} from '@angular/core';
 import {RecipeViewComponent} from "../recipe-view/recipe-view.component";
 import {RecipesService} from "../../services/recipes.service";
-import {Observable} from "rxjs";
 import {AsyncPipe} from "@angular/common";
+import {Recipe} from "../../model/recipe.model";
 
 
 @Component({
@@ -16,9 +15,17 @@ import {AsyncPipe} from "@angular/common";
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.scss'
 })
-export class RecipeListComponent {
+export class RecipeListComponent implements  OnInit {
 
   private service = inject(RecipesService)
-  protected recipes = this.service.getAllRecipes()
+  // Das $-Zeichen signalisiert, dass der Wert der Variablen ein Observable ist.
+  protected recipes$ = this.service.getAllRecipes()
+  // Alternative zur async-Pipe
+  protected recipes: Recipe[] = []
 
+
+  ngOnInit() {
+    this.service.getAllRecipes()
+      .subscribe(recipes => this.recipes = recipes)
+  }
 }
