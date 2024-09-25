@@ -1,6 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Recipe} from "../model/recipe.model";
-import {recipes} from "../data/recipe.dummy.data";
+import {inject, Injectable} from '@angular/core';
+import {Recipe, RecipeDTO} from "../model/recipe.model";
+import {HttpClient} from "@angular/common/http";
+import {map, Observable} from "rxjs";
+import {mapRecipeDTOToRecipe} from "../mappings/recipe.mappings";
 
 
 @Injectable({
@@ -8,24 +10,27 @@ import {recipes} from "../data/recipe.dummy.data";
 })
 export class RecipesService {
 
-  public getAllRecipes(): Recipe[] {
-    return recipes
-      .sort((lhs: Recipe, rhs: Recipe) => {
-        return lhs.name.localeCompare(rhs.name)
-      })
+  private readonly http = inject(HttpClient)
+
+
+  public getAllRecipes(): Observable<Recipe[]> {
+    return this.http.get<RecipeDTO[]>("http://localhost:3000/recipes")
+      .pipe(
+        map(dtoArray => dtoArray.map(dto => mapRecipeDTOToRecipe(dto)))
+      )
   }
 
 
-  public getRecipeAt(index: number): Recipe {
-    if (index > this.getAllRecipes().length - 1 || index < 0) {
-      throw new Error(`Index out of bounds index: ${index}, length: ${this.getAllRecipes().length}.`)
-    }
+  // public getRecipeAt(index: number): Recipe {
+  // if (index > this.getAllRecipes().length - 1 || index < 0) {
+  //   throw new Error(`Index out of bounds index: ${index}, length: ${this.getAllRecipes().length}.`)
+  // }
+  //
+  // return this.getAllRecipes()[index]
+  // }
 
-    return this.getAllRecipes()[index]
-  }
 
-
-  public addRecipe(recipe: Recipe) {
-    this.getAllRecipes().push(recipe)
-  }
+  // public addRecipe(recipe: Recipe) {
+  // this.getAllRecipes().push(recipe)
+  // }
 }

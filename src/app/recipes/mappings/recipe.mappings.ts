@@ -1,6 +1,7 @@
 import {Recipe, RecipeDTO} from "../model/recipe.model";
 
 
+// Duck-Typing
 export function mapRecipeDTOToRecipe(dto: RecipeDTO): Recipe {
   return {
     id: parseInt(dto.id),
