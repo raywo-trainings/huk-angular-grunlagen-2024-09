@@ -1,0 +1,9 @@
+### GET request all recipes
+GET http://localhost:3000/recipes
+Accept: application/json
+
+### GET single recipe
+GET http://localhost:3000/recipes/1
+Accept: application/json
+
+###
