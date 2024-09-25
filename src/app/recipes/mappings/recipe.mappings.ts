@@ -1,8 +1,7 @@
 import {Recipe, RecipeDTO} from "../model/recipe.model";
-import {Difficulty} from "../model/Difficulty.model";
 
 
-function mapRecipeDTOToRecipe(dto: RecipeDTO): Recipe {
+export function mapRecipeDTOToRecipe(dto: RecipeDTO): Recipe {
   return {
     id: parseInt(dto.id),
     name: dto.name,
@@ -17,7 +16,7 @@ function mapRecipeDTOToRecipe(dto: RecipeDTO): Recipe {
 }
 
 
-function mapRecipeToRecipeDTO(recipe: Recipe): RecipeDTO {
+export function mapRecipeToRecipeDTO(recipe: Recipe): RecipeDTO {
   return {
     id: recipe.id.toString(),
     name: recipe.name,
