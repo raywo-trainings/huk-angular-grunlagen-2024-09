@@ -6,7 +6,7 @@ import {TimeUnit} from "./TimeUnit.model";
 
 export interface Recipe {
 
-  id: number
+  id?: string
   name: string
   img: string
   servings: number
@@ -22,7 +22,7 @@ export interface Recipe {
 // DTO = Data Transfer Object
 export interface RecipeDTO {
 
-  id: string
+  id?: string
   name: string
   img: string
   portions: number
@@ -37,7 +37,7 @@ export interface RecipeDTO {
 
 export function emptyRecipe(): Recipe {
   return {
-    id: -1,
+    id: undefined,
     name: "",
     img: "",
     servings: 0,

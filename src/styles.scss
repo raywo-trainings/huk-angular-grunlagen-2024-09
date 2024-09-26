@@ -1,9 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
-html, body { height: 100%; }
+
+@import "app/styles/reset";
+@import "app/styles/badges";
+@import "app/styles/cards";
+@import "app/styles/buttons";
+@import "app/styles/forms";
+@import "app/styles/layout";
+
+html, body {
+  --primary-color: #ffed00;
+  --secondary-color: lightgray;
+  --danger-color: #e3122d;
+  --background-color: #f4f8f9;
+}
+
 body {
   margin: 0;
   font-family: "Helvetica Neue", Roboto, sans-serif;
-  background-color: #e0e0e0;
+  background-color: var(--background-color);
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.banner-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 1rem;
 }
 
 .grid-container {
@@ -22,19 +45,6 @@ body {
 mat-card-content, mat-card-header {
   padding-top: 1rem !important;
   padding-bottom: 1rem !important;
-}
-
-.card {
-  border: 1px solid gray;
-  border-radius: 1rem;
-  padding: 1rem;
-  background: white;
-  box-shadow: 5px 5px 20px gray;
-
-  img {
-    object-fit: contain;
-    width: 100%;
-  }
 }
 
 h2 {
@@ -92,6 +102,10 @@ main {
 
 .flex-justify-content-end {
   justify-content: flex-end;
+}
+
+.flex-justify-content-between {
+  justify-content: space-between;
 }
 
 .flex-grow-1 {

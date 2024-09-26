@@ -5,7 +5,7 @@ import {map, Observable} from "rxjs";
 import {mapRecipeDTOToRecipe, mapRecipeToRecipeDTO} from "../mappings/recipe.mappings";
 
 
-type RecipeIdentifier = Recipe | number
+type RecipeIdentifier = Recipe | string
 
 
 @Injectable({
@@ -24,7 +24,7 @@ export class RecipesService {
   }
 
 
-  public getRecipe(id: number): Observable<Recipe> {
+  public getRecipe(id: string): Observable<Recipe> {
     return this.http.get<RecipeDTO>(this.getUrl(id))
       .pipe(
         map(dto => mapRecipeDTOToRecipe(dto))
@@ -63,10 +63,10 @@ export class RecipesService {
   }
 
 
-  private extractID(identifier?: RecipeIdentifier): number | undefined {
+  private extractID(identifier?: RecipeIdentifier): string | undefined {
     if (!identifier) return undefined
 
-    if (typeof identifier === "number") {
+    if (typeof identifier === "string") {
       return identifier
     }
 

@@ -1,4 +1,9 @@
-<h2>Recipes</h2>
+<div class="flex-container flex-justify-content-between">
+  <h2>Recipes</h2>
+  <a [routerLink]="'new'" class="btn btn-primary">
+    Neues Rezept
+  </a>
+</div>
 
 <div class="grid-container">
   @for (recipe of recipes$ | async; track recipe) {

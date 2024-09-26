@@ -4,7 +4,7 @@ import {Recipe, RecipeDTO} from "../model/recipe.model";
 // Duck-Typing
 export function mapRecipeDTOToRecipe(dto: RecipeDTO): Recipe {
   return {
-    id: parseInt(dto.id),
+    id: dto.id,
     name: dto.name,
     img: dto.img,
     servings: dto.portions,
@@ -19,7 +19,7 @@ export function mapRecipeDTOToRecipe(dto: RecipeDTO): Recipe {
 
 export function mapRecipeToRecipeDTO(recipe: Recipe): RecipeDTO {
   return {
-    id: recipe.id.toString(),
+    id: recipe.id,
     name: recipe.name,
     img: recipe.img,
     portions: recipe.servings,
