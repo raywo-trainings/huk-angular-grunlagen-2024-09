@@ -1,5 +1,16 @@
 <div>
-  <h2>{{recipe().name}}</h2>
+  <img class="banner-image" src="{{recipe().img}}" alt="Bild zum Rezept">
 
-  <p>{{recipe().preparation}}</p>
+  <h2>{{ recipe().name }}</h2>
+
+  <div class="mb-2 mt-2">
+    <app-recipe-info-view [recipe]="recipe()"/>
+  </div>
+
+  <app-recipe-ingredients-list [ingredients]="recipe().ingredients"
+                               [servings]="recipe().servings"/>
+
+  <h3>Zubereitung</h3>
+  <p>{{ recipe().preparation }}</p>
+
 </div>

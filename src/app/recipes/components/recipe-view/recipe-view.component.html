@@ -1,10 +1,16 @@
 <div class="card">
-  <h3>{{ recipe().name }}</h3>
-  <img src="{{recipe().img}}" alt="Bild zum Rezept">
-  <p>Schwierigkeit: {{ recipe().difficulty }}</p>
-  <p>Dauer: {{ recipe().duration.value }} {{ recipe().duration.unit }}</p>
+  <div class="card-header flex-container">
+    <img [src]="recipe().img" alt="Avatarbild für das Rezept" class="card-avatar-img">
+    <h3>{{ recipe().name }}</h3>
+  </div>
+  <img src="{{recipe().img}}" alt="Bild zum Rezept" class="card-image">
 
-  <hr>
+  <div class="card-body">
+    <p><strong>Schwierigkeit:</strong> {{ recipe().difficulty }}</p>
+    <p><strong>Dauer:</strong> {{ recipe().duration.value }} {{ recipe().duration.unit }}</p>
+  </div>
 
-  <a [routerLink]="['/recipes', recipe().id]">Details anzeigen</a>
+  <div class="card-footer">
+    <a [routerLink]="['/recipes', recipe().id]" class="btn btn-primary">Details anzeigen</a>
+  </div>
 </div>

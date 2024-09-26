@@ -1,12 +1,17 @@
 import {Component, effect, inject, input, signal, WritableSignal} from '@angular/core';
 import {emptyRecipe, Recipe} from "../../model/recipe.model";
 import {RecipesService} from "../../services/recipes.service";
+import {RecipeInfoViewComponent} from "../recipe-info-view/recipe-info-view.component";
+import {RecipeIngredientsListComponent} from "../recipe-ingredients-list/recipe-ingredients-list.component";
 
 
 @Component({
   selector: 'app-recipe-detail-view',
   standalone: true,
-  imports: [],
+  imports: [
+    RecipeInfoViewComponent,
+    RecipeIngredientsListComponent
+  ],
   templateUrl: './recipe-detail-view.component.html',
   styleUrl: './recipe-detail-view.component.scss'
 })
@@ -20,7 +25,7 @@ export class RecipeDetailViewComponent {
 
   constructor() {
     effect(() => {
-      this.service.getRecipe(parseInt(this.recipeID()))
+      this.service.getRecipe(this.recipeID())
         .subscribe(recipe => this.recipe.set(recipe))
     })
 
